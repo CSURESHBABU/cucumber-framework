@@ -35,7 +35,7 @@ public class shoppingPageStepDefinition
     @Then("Validate the product name and compare")
    public void validate_the_product_name_and_compare() {
 
-        WebDriverWait wait = new WebDriverWait(DriverManager.getDriver().driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(5));
 
         String fullProductText = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[@class='product-name']"))
@@ -56,7 +56,7 @@ public class shoppingPageStepDefinition
     @Then("Validate the product name and compare on deals page")
     public void validate_the_product_name_and_compare_on_deals_page() {
 
-        WebDriverWait wait = new WebDriverWait(DriverManager.getDriver().driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(5));
 
         String ProductText = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(By.xpath("//tr//td[1]"))
