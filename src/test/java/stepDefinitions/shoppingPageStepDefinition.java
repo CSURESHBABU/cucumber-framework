@@ -47,7 +47,7 @@ public class shoppingPageStepDefinition
         ).getText();
 
         String productName = fullProductText.split("-")[0].trim();
-        Assert.assertEquals("Tomato", productName);
+        Assert.assertEquals("Tomato",productName);
     }
 
 
@@ -68,7 +68,7 @@ public class shoppingPageStepDefinition
         ).getText();
 
         String productName = ProductText.trim();
-        Assert.assertEquals("Tomato", productName);
+        Assert.assertEquals("Tomato",productName);
     }
 
 }
