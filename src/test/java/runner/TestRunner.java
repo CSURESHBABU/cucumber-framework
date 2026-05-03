@@ -12,5 +12,5 @@ import io.cucumber.testng.CucumberOptions;
                 plugin = {"pretty","html:target/cucumber-reports.html"}
                 //dryRun = true
         )
-public class shoppingPageRunnerClass extends AbstractTestNGCucumberTests {
+public class TestRunner extends AbstractTestNGCucumberTests {
 }
