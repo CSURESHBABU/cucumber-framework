@@ -12,11 +12,14 @@ public class DriverManager {
 
     public static WebDriver getDriver()
     {
-        return driver;
+        return DriverManager.driver;
     }
 
     public static void quit()
     {
-        getDriver().quit();
+        if (driver != null)
+        {
+            driver.quit();
+        }
     }
 }

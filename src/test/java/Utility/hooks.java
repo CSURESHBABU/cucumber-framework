@@ -1,19 +1,29 @@
 package Utility;
 
 import io.cucumber.java.Before;
+import io.cucumber.java.After;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
-public class hooks {
-
-    private static WebDriver driver;
+public class Hooks {
 
     @Before
-    public static void setDriver()
-    {
-        driver = new ChromeDriver();
-        DriverManager.setup(driver);
+    public void setDriver() {
+        /*
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless=new");   // important for Jenkins
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+
+        WebDriver driver = new ChromeDriver(options);
+        */
+        WebDriver driver = new ChromeDriver();
+        DriverManager.setup(driver);   // ⭐ MOST IMPORTANT
     }
 
-
+    @After
+    public void tearDown() {
+        DriverManager.quit();
+    }
 }
