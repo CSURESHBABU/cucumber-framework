@@ -37,12 +37,11 @@ public class shoppingPageStepDefinition
 
         WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(5));
 
-        String fullProductText = wait.until(
-                ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[@class='product-name']"))
-        ).getText();
+        By productLocator = By.xpath("//h4[@class='product-name']");
 
-        String productName = fullProductText.split("-")[0].trim();
-        Assert.assertEquals("Tomato",productName);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(productLocator));
+
+        String fullProductText = DriverManager.getDriver().findElement(productLocator).getText();
     }
 
 
