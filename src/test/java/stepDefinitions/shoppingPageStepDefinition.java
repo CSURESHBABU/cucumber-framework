@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import Utility.DriverManager;
 import org.openqa.selenium.WebDriver;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,16 +18,16 @@ import java.util.*;
 public class shoppingPageStepDefinition
 {
 
-    public static WebDriver driver;
+    //public static WebDriver driver;
 
     @Given("Land on GreenKart shopping page")
     public void land_on_green_kart_shopping_page() {
-        driver = new ChromeDriver();
-        driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
+       // driver = new ChromeDriver();
+        DriverManager.getDriver().get("https://rahulshettyacademy.com/seleniumPractise/#/");
     }
     @When("Search with {string} shortname and get the product name")
     public void search_with_shortname_and_get_the_product_name(String shortName) {
-        driver.findElement(By.xpath("//input[@type='search']")).sendKeys(shortName);
+        DriverManager.getDriver().findElement(By.xpath("//input[@type='search']")).sendKeys(shortName);
     }
 
 
@@ -34,7 +35,7 @@ public class shoppingPageStepDefinition
     @Then("Validate the product name and compare")
    public void validate_the_product_name_and_compare() {
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(DriverManager.getDriver().driver, Duration.ofSeconds(5));
 
         String fullProductText = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[@class='product-name']"))
@@ -49,13 +50,13 @@ public class shoppingPageStepDefinition
     @Given("Land on deals page")
     public void land_on_deals_page()
     {
-      driver.get("https://rahulshettyacademy.com/seleniumPractise/#/offers");
+        DriverManager.getDriver().get("https://rahulshettyacademy.com/seleniumPractise/#/offers");
     }
 
     @Then("Validate the product name and compare on deals page")
     public void validate_the_product_name_and_compare_on_deals_page() {
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(DriverManager.getDriver().driver, Duration.ofSeconds(5));
 
         String ProductText = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(By.xpath("//tr//td[1]"))
