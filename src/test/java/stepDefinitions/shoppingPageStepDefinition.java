@@ -33,13 +33,7 @@ public class shoppingPageStepDefinition
 
     @Then("Validate the product name and compare")
    public void validate_the_product_name_and_compare() {
-        /*
-        String fullProductText = driver.findElement(By.xpath("//h4[@class='product-name']")).getText();
 
-        String[] product = fullProductText.split(" ");
-        System.out.println("product name is : "+product[0]);
-       Assert.assertEquals("Tomato",product[0]);
-       */
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
         String fullProductText = wait.until(
