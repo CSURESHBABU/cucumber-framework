@@ -2,8 +2,12 @@
 package stepDefinitions;
 import Utility.DriverManager;
 
+import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -23,8 +27,29 @@ public class hooks {
         DriverManager.setup(driver);   // ⭐ MOST IMPORTANT
     }
 
+
+
     @After
     public void tearDown() {
+
         DriverManager.quit();
     }
-}
+
+    @AfterStep
+    public void screenshot(Scenario scenario) {
+
+        if(scenario.isFailed())
+        {
+            TakesScreenshot ts = (TakesScreenshot) DriverManager.getDriver();
+            byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot,"image/png","Failure Screenshot");
+
+
+        }
+    }
+
+    }
+
+
+
+

@@ -28,6 +28,8 @@ public class shoppingPageStepDefinition
     @When("Search with {string} shortname and get the product name")
     public void search_with_shortname_and_get_the_product_name(String shortName) {
         DriverManager.getDriver().findElement(By.xpath("//input[@type='search']")).sendKeys(shortName);
+
+
     }
 
 
@@ -50,6 +52,7 @@ public class shoppingPageStepDefinition
     public void land_on_deals_page()
     {
         DriverManager.getDriver().get("https://rahulshettyacademy.com/seleniumPractise/#/offers");
+
     }
 
     @Then("Validate the product name and compare on deals page")
@@ -62,7 +65,7 @@ public class shoppingPageStepDefinition
         ).getText();
 
         String productName = ProductText.trim();
-        Assert.assertEquals("Tomato",productName);
+        Assert.assertEquals("Tomat",productName);
     }
 
 }
